@@ -3,17 +3,6 @@ const OPERATOR = 'operator';
 const ALL_CLEAR = 'ac';
 
 export default function View(rootElement, input) {
-  const initialize = () => {
-    renderNumberAndOperators();
-    addEventListeners();
-  };
-
-  const addEventListeners = () => {
-    rootElement
-      .querySelector('.calculator')
-      .addEventListener('click', handleButtonClick);
-  };
-
   const handleButtonClick = (event) => {
     const { dataset } = event.target;
 
@@ -45,7 +34,8 @@ export default function View(rootElement, input) {
       .join('');
   };
 
-  return {
-    initialize,
-  };
+  renderNumberAndOperators();
+  rootElement
+    .querySelector('.calculator')
+    .addEventListener('click', handleButtonClick);
 }

@@ -7,6 +7,5 @@ const rootElement = document.querySelector('#app');
 const validator = new Validator();
 const calculator = new Calculator();
 const input = new Input(calculator, validator);
-const view = new View(rootElement, input);
 
-view.initialize();
+View(rootElement, input);

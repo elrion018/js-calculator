@@ -39,7 +39,7 @@ export default class Calculator {
   inputOperator(operator) {
     if (operator === EQUAL) return this.#calculateNumbers();
 
-    this.#operators = this.#operators.concat([operator]);
+    this.#operators.push(operator);
   }
 
   /** numbers의 마지막 숫자의 자릿수를 증가시키는 메소드 */

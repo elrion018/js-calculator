@@ -44,12 +44,8 @@ export default class Calculator {
 
   /** numbers의 마지막 숫자의 자릿수를 증가시키는 메소드 */
   #buildNumber(number) {
-    const copiedNumbers = [...this.#numbers];
-
-    copiedNumbers[copiedNumbers.length - 1] =
-      copiedNumbers.at(-1) * 10 + number;
-
-    this.#numbers = copiedNumbers;
+    this.#numbers[this.#numbers.length - 1] =
+      this.#numbers.at(-1) * 10 + number;
   }
 
   /** numbers에 새로운 number를 추가하는 메소드 */
@@ -58,16 +54,10 @@ export default class Calculator {
   }
 
   #calculateNumbers() {
-    // 2개 숫자 이상의 긴 연산에 대비한 반복문 로직
-
-    const calculatedNumber = this.#numbers.reduce((acc, number, index) => {
-      // 3개 이상의 숫자는 연산하지 않는다.
-      if (index !== 1) return acc;
-
-      const operator = this.#operators[index - 1];
-
-      return operations[operator](acc, number);
-    }, this.#numbers[0]);
+    const calculatedNumber = operations[this.#operators[0]](
+      this.#numbers[0],
+      this.#numbers[1]
+    );
 
     this.#numbers = [calculatedNumber];
     this.#operators = [];
